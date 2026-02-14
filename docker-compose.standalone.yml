@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  yt-uploader:
+    build: ./yt-uploader
+    container_name: yt-uploader
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production

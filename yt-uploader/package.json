@@ -1,0 +1,22 @@
+{
+  "name": "yt-uploader",
+  "version": "1.0.0",
+  "description": "Async YouTube large video uploader for n8n",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "keywords": [
+    "youtube",
+    "uploader",
+    "n8n",
+    "async",
+    "streaming"
+  ],
+  "author": "",
+  "license": "MIT"
+}

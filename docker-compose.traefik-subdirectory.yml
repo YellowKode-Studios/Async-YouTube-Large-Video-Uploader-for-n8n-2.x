@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  yt-uploader:
+    build: ./yt-uploader
+    container_name: yt-uploader
+    restart: always
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      # Option A: Subdirectory routing (e.g., n8n.yourdomain.com/yt-upload)
+      - "traefik.http.routers.ytuploader.rule=Host(`n8n.yourdomain.com`) && PathPrefix(`/yt-upload`)"
+      - "traefik.http.routers.ytuploader.entrypoints=websecure"
+      - "traefik.http.routers.ytuploader.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.ytuploader-stripprefix.stripprefix.prefixes=/yt-upload"
+      - "traefik.http.routers.ytuploader.middlewares=ytuploader-stripprefix"
+      - "traefik.http.services.ytuploader.loadbalancer.server.port=3000"
+
+networks:
+  web:
+    external: true
